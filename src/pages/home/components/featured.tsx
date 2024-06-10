@@ -7,12 +7,11 @@ const Featured = () => {
     triggerOnce: true,
     threshold: 0.1,
   })
-  
+
   const { ref: ref2, inView: inView2 } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
-  
 
   const containerVariants = {
     hidden: { opacity: 0, y: 100 },
@@ -34,7 +33,7 @@ const Featured = () => {
     title: 'Crocin 150mg',
     qty: 25,
     href: 'https://5.imimg.com/data5/SELLER/Default/2021/5/YM/XU/ZX/33567294/dolo-650mg-paracetamol-tablet-250x250.jpg',
-  }));
+  }))
 
   return (
     <div className='mt-20 w-screen'>
@@ -55,11 +54,11 @@ const Featured = () => {
         <div className='mr-2 flex items-center gap-2'>
           <CiCircleChevLeft
             size={32}
-            className='cursor-pointer text-stone-400'
+            className='text-stone-400 cursor-pointer'
           />
           <CiCircleChevRight
             size={32}
-            className='cursor-pointer text-stone-400'
+            className='text-stone-400 cursor-pointer'
           />
         </div>
       </div>
@@ -67,25 +66,27 @@ const Featured = () => {
       <AnimatePresence>
         <motion.div
           ref={ref1}
-          initial="hidden"
-          animate={inView1 ? "visible" : "hidden"}
+          initial='hidden'
+          animate={inView1 ? 'visible' : 'hidden'}
           variants={containerVariants}
-          className='flex items-center gap-8 w-[90vw] mt-12 overflow-y-hidden overflow-x-auto featured-container'
+          className='featured-container mt-12 flex w-[90vw] items-center gap-8 overflow-x-auto overflow-y-hidden'
         >
           {items.map((item, index) => {
             return (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className='mt-12 h-40 w-28 rounded-xl bg-stone-300 flex flex-col items-center justify-evenly flex-shrink-0 mb-7'
+                className='bg-stone-300 mb-7 mt-12 flex h-40 w-28 flex-shrink-0 flex-col items-center justify-evenly rounded-xl'
               >
                 <img
                   className='h-16 w-12 rounded-md'
                   src={item.href}
                   alt={item.title}
                 />
-                <div className='text-sm text-center'>
-                  <div className='font-semibold text-stone-700'>{item.title}</div>
+                <div className='text-center text-sm'>
+                  <div className='text-stone-700 font-semibold'>
+                    {item.title}
+                  </div>
                   <div className='text-stone-500'>{item.qty} items</div>
                 </div>
               </motion.div>
@@ -95,14 +96,29 @@ const Featured = () => {
 
         <motion.div
           ref={ref2}
-          initial="hidden"
-          animate={inView2 ? "visible" : "hidden"}
+          initial='hidden'
+          animate={inView2 ? 'visible' : 'hidden'}
           variants={containerVariants}
-          className='flex items-center gap-8 w-[90vw] mt-12 overflow-y-hidden overflow-x-auto featured-container'
+          className='featured-container mt-12 flex w-[90vw] items-center gap-8 overflow-x-auto overflow-y-hidden'
         >
-          <motion.div variants={itemVariants} className='w-1/3 h-72 rounded-md bg-stone-200'>Save upto 8% on healthy drinks</motion.div>
-          <motion.div variants={itemVariants} className='w-1/3 h-72 rounded-md bg-stone-200'>20% off on medicines</motion.div>
-          <motion.div variants={itemVariants} className='w-1/3 h-72 rounded-md bg-stone-200'>20% off on medicines</motion.div>
+          <motion.div
+            variants={itemVariants}
+            className='bg-stone-200 h-72 w-1/3 rounded-md'
+          >
+            Save upto 8% on healthy drinks
+          </motion.div>
+          <motion.div
+            variants={itemVariants}
+            className='bg-stone-200 h-72 w-1/3 rounded-md'
+          >
+            20% off on medicines
+          </motion.div>
+          <motion.div
+            variants={itemVariants}
+            className='bg-stone-200 h-72 w-1/3 rounded-md'
+          >
+            20% off on medicines
+          </motion.div>
         </motion.div>
       </AnimatePresence>
     </div>
