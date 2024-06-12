@@ -1,8 +1,11 @@
-import { CiCircleChevLeft, CiCircleChevRight } from 'react-icons/ci'
+// import { CiCircleChevLeft, CiCircleChevRight } from 'react-icons/ci'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { useNavigate } from 'react-router-dom'
 
 const Featured = () => {
+  const navigate = useNavigate();
+
   const { ref: ref1, inView: inView1 } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -36,8 +39,8 @@ const Featured = () => {
   }))
 
   return (
-    <div className='mt-20 w-screen'>
-      <div className='flex w-[93vw] items-center justify-between'>
+    <div className='mt-20 w-screen z-10'>
+      <div className='flex w-[96vw] items-center justify-between'>
         <div className='flex items-center gap-24'>
           <h1 className='text-[1.75rem] font-medium'>Featured Categories</h1>
           <div className='mt-2 flex items-center gap-8 text-sm'>
@@ -51,15 +54,16 @@ const Featured = () => {
             })}
           </div>
         </div>
-        <div className='mr-2 flex items-center gap-2'>
-          <CiCircleChevLeft
+        <div className='mr-2 flex items-center font-semibold tracking-wider underline text-xs cursor-pointer' onClick={() => navigate('/products')}>
+          {/* <CiCircleChevLeft
             size={32}
             className='text-stone-400 cursor-pointer'
           />
           <CiCircleChevRight
             size={32}
             className='text-stone-400 cursor-pointer'
-          />
+          /> */}
+          VIEW ALL
         </div>
       </div>
 
@@ -69,14 +73,15 @@ const Featured = () => {
           initial='hidden'
           animate={inView1 ? 'visible' : 'hidden'}
           variants={containerVariants}
-          className='featured-container mt-12 flex w-[90vw] items-center gap-8 overflow-x-auto overflow-y-hidden'
+          className='featured-container mt-12 flex w-[96vw] items-center gap-8 overflow-x-auto overflow-y-hidden'
         >
           {items.map((item, index) => {
             return (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className='bg-stone-300 mb-7 mt-12 flex h-40 w-28 flex-shrink-0 flex-col items-center justify-evenly rounded-xl'
+                className='bg-stone-300 mb-7 mt-12 flex h-40 w-28 flex-shrink-0 flex-col items-center justify-evenly rounded-xl cursor-pointer'
+                onClick={() => navigate('/details')}
               >
                 <img
                   className='h-16 w-12 rounded-md'
@@ -99,7 +104,7 @@ const Featured = () => {
           initial='hidden'
           animate={inView2 ? 'visible' : 'hidden'}
           variants={containerVariants}
-          className='featured-container mt-12 flex w-[90vw] items-center gap-8 overflow-x-auto overflow-y-hidden'
+          className='featured-container mt-12 flex w-[96vw] items-center gap-8 overflow-x-auto overflow-y-hidden'
         >
           <motion.div
             variants={itemVariants}

@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -52,7 +51,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border select-none;
   }
   body {
     @apply bg-background text-foreground;
@@ -107,4 +106,36 @@
 
 .featured-container::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.categori-slider {
+  padding: 0px;
+}
+.categori-slider .category-box {
+  text-align: center;
+}
+.categori-slider .category-box .category-icon {
+  width: 100px;
+  height: 105px;
+  margin: 0px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.categori-slider .category-box .category-icon .cat-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  object-position: center;
+}
+@media (max-width: 1024px) {
+  .categori-slider .category-box .category-icon {
+    width: 70px;
+    height: 75px;
+  }
+
+  .categori-slider .category-box .category-icon .cat-icon {
+    width: 30px;
+    height: 30px;
+  }
 }

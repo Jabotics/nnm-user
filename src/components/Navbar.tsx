@@ -40,6 +40,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 import { FaChevronDown } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -81,6 +82,8 @@ const components: { title: string; href: string; description: string }[] = [
 
 const Navbar = () => {
   const { i18n } = useTranslation()
+  const navigate = useNavigate()
+
   const [language, setLanguage] = useState('en')
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
@@ -121,6 +124,11 @@ const Navbar = () => {
               <div
                 className='flex h-5 items-center justify-center space-x-2'
                 key={index}
+                onClick={() => {
+                  if (item.title === 'My Account') {
+                    navigate('/profile')
+                  }
+                }}
               >
                 <div className='ml-2'>{item.title}</div>
                 {item.title !== 'Order Tracking' && (
@@ -180,10 +188,10 @@ const Navbar = () => {
 
       {/*  */}
       <div className='flex h-24 w-full items-center justify-between border-b border-stone-200'>
-        <img src='/nnm_icon.png' alt='logo' className='ml-6 h-20 w-auto' />
+        <img src='/nnm_icon.png' alt='logo' className='ml-6 h-20 w-auto cursor-pointer' onClick={() => navigate('/')} />
 
         <div className='flex w-5/6 items-center'>
-          <div className='flex h-12 w-[40rem] items-center rounded-md border border-stone-200'>
+          <div className='flex h-12 w-2/3 items-center rounded-md border border-stone-200'>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant='ghost' className='flex items-center'>
@@ -216,10 +224,11 @@ const Navbar = () => {
             </DropdownMenu>
 
             <Separator orientation='vertical' className='mx-4 h-5' />
-            <input type='text' className='mr-2 border-none' />
+            <input type="text" style={{ border: "none", outline: "none" }} className="mr-2 w-full h-[80%]" placeholder='Search for products' />
+
           </div>
 
-          <div className='relative mx-20 flex h-8 w-40 items-center justify-center rounded-md border border-stone-200'>
+          <div className='relative mx-20 flex h-8 w-1/3 items-center justify-center rounded-md border border-stone-200'>
             <div
               onClick={() => setIsLocDropdownOpen(!isLocDropdownOpen)}
               className='flex cursor-pointer items-center bg-transparent text-sm'
@@ -261,7 +270,9 @@ const Navbar = () => {
             <span>Cart</span>
           </div>
 
-          <div className='mx-3 flex items-center gap-1'>
+          <div className='mx-3 flex items-center gap-1 cursor-pointer' onClick={() => {
+            navigate('/profile')
+          }}>
             <RiAccountPinCircleLine size={20} />
             <span>Account</span>
           </div>

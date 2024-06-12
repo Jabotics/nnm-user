@@ -41,21 +41,21 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
           {slides.map((slide, index) => {
             return (
               <div className='embla__slide relative' key={index}>
-                <div className='absolute left-20 top-32'>
+                <div className='absolute left-32 top-32'>
                   <div className='text-5xl text-stone-900'>{slide.title}</div>
-                  <div className='text-lg tracking-wide text-stone-300'>
+                  <div className='text-sm tracking-widest text-stone-500'>
                     {slide.headline}
                   </div>
 
-                  <div className='mt-32 flex h-12 w-[30rem] items-center gap-2 rounded-full bg-stone-50 pl-5'>
+                  <div className='mt-28 flex h-12 w-full items-center gap-2 rounded-full bg-stone-50 pl-5'>
                     <IoPaperPlaneOutline size={20} color={'#33333385'} />
                     <input
                       type='text'
-                      className='flex-1 border-none bg-transparent pl-3 focus:outline-none focus:ring-0 active:border-none'
+                      className='flex-1 border-none bg-transparent pl-2 focus:outline-none focus:ring-0 active:border-none'
                       placeholder='subscribe to the newsletter'
                     />
 
-                    <Button className='h-12 w-32 rounded-3xl'>Subscribe</Button>
+                    <Button className='ml-12 h-12 w-32 rounded-3xl'>Subscribe</Button>
                   </div>
                 </div>
                 <img
